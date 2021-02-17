@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
+</head>
+<body>
+<div style="display:flex;">
+    <div style="margin: auto;">
+        <h1>Users</h1>
+    </div>
+    <div style="margin: auto; display:flex;">
+        <div style="margin:auto;">Logged in as: [[${#httpServletRequest.remoteUser}]]</div><p>&nbsp; &nbsp; </p>
+        <div style="margin:auto;">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" style="background:blue; color:white;"/>
+            </form>
+
+            <a href="/login">Log in</a> | <a href="/signup">Sign up</a>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<table>
+    <tr>
+        <th>User code</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    <tr th:each = "user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td><span th:if="${user.role == 'ADMIN'}" style="color:red;" th:text="${user.username}"></span>
+            <span th:if="${user.role == 'USER'}" th:text="${user.username}"></span></td>
+        <td th:text="${user.email}"></td>
+        <td><span th:if="${user.role == 'ADMIN'}" style="color:red;" th:text="${user.role}"></span>
+            <span th:if="${user.role == 'USER'}" th:text="${user.role}"></span></td>
+        <!--  highlight admin  -->
+        <td><a th:href="@{/view/{id}(id=${user.id})}">View profile</a></td>
+    </tr>
+</table>
+<!--  <a href="/add">Add Product</a>     -->
+</body>
+</html>

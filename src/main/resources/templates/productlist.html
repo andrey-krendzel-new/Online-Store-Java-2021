@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+</head>
+<body>
+<div style="display:flex;" class="header">
+    <div style="margin: auto;">
+        <h1>Marketplace</h1>
+    </div>
+    <div style="margin: auto;">
+        <div style="margin:auto;">
+            <div style="align:inline; float:left;">Logged in as:</div>
+
+            <b>[[${#httpServletRequest.remoteUser}]] </b><div sec:authorize="isAuthenticated()"><a th:href="@{/view/{id}(id=${currentId})}">(View Profile)</a>
+        </div>
+
+        </div>
+
+        <div sec:authorize="isAuthenticated()" style="margin:auto; margin-top:10px;">
+            Current balance: <a th:href="@{/view/{id}(id=${currentId})}">(Add)</a>
+        </div>
+
+        <div style="margin:auto;">
+            <div sec:authorize="isAuthenticated()">
+                <form method="post" th:action="@{/logout}">
+                    <input style="background:blue; color:white;" type="submit" value="Sign Out"/>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div sec:authorize="isAnonymous()">
+            <a href="/login">Log in</a> | <a href="/signup">Sign up</a>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Product code</th>
+        <th>Title</th>
+        <th>Seller</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Category</th>
+    </tr>
+    <tr th:each = "product : ${products}">
+        <td><img style="width:100px; height:100px;" th:src="@{{id}(id=${product.imageUrl})}"/></td>
+        <td th:text="${product.id}"></td>
+        <td style="font-style:bold;" th:text="${product.title}"></td>
+        <td><a th:href="@{/view/{id}(id=${product.sellerId})}" th:text="${product.sellerUsername} + ' (View profile)'" ></a></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td th:text="${product.category.name}"></td>
+        <td><span th:if="${product.sellerUsername == currentUsername}"><a th:href="@{/delete/{id}(id=${product.id})}">Delete</a></span></td>
+        <td><span th:if="${product.sellerUsername == currentUsername}"><a th:href="@{/edit/{id}(id=${product.id})}">Edit</a></span></td>
+    </tr>
+</table>
+<a href="/add">Add Product</a>
+</body>
+</html>
