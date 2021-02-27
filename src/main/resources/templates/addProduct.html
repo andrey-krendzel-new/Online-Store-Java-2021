@@ -6,14 +6,14 @@
     <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 <body>
-<h1>Add book</h1>
+<h1>Add product</h1>
 <div>
-    <form th:object="${product}" th:action="@{save}" action="#" method="post">
+    <form th:object="${product}" th:action="@{save}" action="#" method="post" enctype="multipart/form-data">
         <div style="clear: both; display: block; height: 10px;"></div>
-        <label for="lname">Title</label>
+        <label for="title">Title</label>
         <input type="text" id="lname" th:field="*{title}" />
         <div style="clear: both; display: block; height: 10px;"></div>
-        <label for="email">Seller: </label>
+        <label for="seller">Seller: </label>
         <input  id="seller" th:field="*{sellerUsername}" readonly/>
 
         <!--   <span sec:authentication="name">Bob</span>  -->
@@ -27,6 +27,10 @@
         </select>
         <label for="price">Price</label>
         <input type="text" th:field="*{price}" />
+        <div>
+            <label>Photos: </label>
+            <input type="file" name="image" accept="image/png, image/jpeg" />
+        </div>
         <input type="submit" value="Save"></input>
     </form>
 </div>

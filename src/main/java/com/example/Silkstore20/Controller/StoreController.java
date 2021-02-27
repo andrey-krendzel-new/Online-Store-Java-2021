@@ -5,11 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,9 +93,20 @@ public class StoreController {
 
     // Save form
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Product product){
+    public String save(Product product,  @RequestParam("image") MultipartFile multipartFile) throws IOException {
         // Sets the seller to be the User that is currently logged in, again. Just in case to prevent future errors.
         product.setSeller(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+
+      //  String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+       // user.setPhotos(fileName);
+
+       // User savedUser = repo.save(user);
+
+       // String uploadDir = "user-photos/" + savedUser.getId();
+
+       //FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+       // return new RedirectView("/users", true);
         // Saves product to repository
         productRepository.save(product);
         // Redirect to main page

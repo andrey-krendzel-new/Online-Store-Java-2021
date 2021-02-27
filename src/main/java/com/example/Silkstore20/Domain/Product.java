@@ -23,6 +23,8 @@ public class Product {
     private User seller;
     private String sellerUsername;
     private String sellerId;
+
+    @Column(nullable = true, length = 64)
     private String imageUrl;
 
     @ManyToOne
