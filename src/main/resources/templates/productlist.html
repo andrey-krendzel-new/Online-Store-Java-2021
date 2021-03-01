@@ -54,7 +54,10 @@
         <th>Category</th>
     </tr>
     <tr th:each = "product : ${products}">
-        <td><img style="width:100px; height:100px;" th:src="@{{id}(id=${product.imageUrl})}"/></td>
+        <td>
+            <img th:src="@{{path}(path=${product.getPhotosImagePath})}" />
+            <!--<img style="width:100px; height:100px;" th:src="@{{id}(id=${product.imageUrl})}"/>-->
+        </td>
         <td th:text="${product.id}"></td>
         <td style="font-style:bold;" th:text="${product.title}"></td>
         <td><a th:href="@{/view/{id}(id=${product.sellerId})}" th:text="${product.sellerUsername} + ' (View profile)'" ></a></td>

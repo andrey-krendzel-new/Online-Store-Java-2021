@@ -48,6 +48,15 @@ public Product(){
 
 }
 
+// Special getter for product photos
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (imageUrl == null) return null;
+
+        return "/product-photos/" + id + "/" + imageUrl;
+    }
+
 // Setters and getters
 public long     getId()       { return id;     }
 

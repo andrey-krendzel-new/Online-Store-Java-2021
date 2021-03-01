@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -97,16 +99,16 @@ public class StoreController {
         // Sets the seller to be the User that is currently logged in, again. Just in case to prevent future errors.
         product.setSeller(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
-      //  String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-       // user.setPhotos(fileName);
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        product.setImageUrl(fileName);
 
-       // User savedUser = repo.save(user);
+       Product savedProduct = productRepository.save(product);
 
-       // String uploadDir = "user-photos/" + savedUser.getId();
+       String uploadDir = "product-photos/" + savedProduct.getId();
 
-       //FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+       FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-       // return new RedirectView("/users", true);
+
         // Saves product to repository
         productRepository.save(product);
         // Redirect to main page
