@@ -35,12 +35,30 @@
         <span th:if="${user.role == 'USER'}" th:text="${user.username}"></span></td></tr>
     <tr><td>Email: </td> <td th:text="${user.email}"></td></tr>
     <tr><td>Role: </td> <td th:text="${user.role}"></td></tr>
+    <tr><td>Money: </td> <td th:text="${user.money}"></td></tr>
+
 
 </table>
 <br />
 
 <td th:if="${id == currentId}"><div class="your"><h2>This is your profile.</h2><h3>Deposit money to buy items</h3>
 
+    <form th:object="${user}" th:action="@{deposit}" action="#" method="post" enctype="multipart/form-data">
+        <div style="clear: both; display: block; height: 10px;"></div>
+        <label for="amount">Amount</label>
+        <input type="text" id="lname" th:field="*{money}" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+        <label>Payment method: </label>
+        <input type="radio" id="bitcoin" name="method" value="bitcoin">
+        <label for="bitcoin">Bitcoin</label><br>
+        <input type="radio" id="paypal" name="method" value="paypal">
+        <label for="paypal">PayPal</label><br>
+        <input type="radio" id="skrill" name="method" value="skrill">
+        <label for="skrill">Skrill</label>
+
+
+        <input type="submit" value="Save"></input>
+    </form>
 
 </div>
 </td>

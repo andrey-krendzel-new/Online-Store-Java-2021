@@ -99,20 +99,31 @@ public class StoreController {
         // Sets the seller to be the User that is currently logged in, again. Just in case to prevent future errors.
         product.setSeller(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         product.setImageUrl(fileName);
+
 
        Product savedProduct = productRepository.save(product);
 
        String uploadDir = "product-photos/" + savedProduct.getId();
 
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
+       System.out.println("fileName " + fileName + "product imageurl" + product.getImageUrl() + "upload dir" + uploadDir);
 
         // Saves product to repository
         productRepository.save(product);
         // Redirect to main page
         return "redirect:productlist";
+    }
+
+    // Deposit money form
+    @RequestMapping(value = "/deposit", method = RequestMethod.POST)
+    public String deposit(User user) {
+
+
+        userRepository.save(user);
+        // Redirect to main page
+        return "redirect:profile";
     }
 
     // Delete product
@@ -142,7 +153,7 @@ public class StoreController {
         return "editProduct";
     }
 
-    // View user profile
+    // View PROFILE
 
     @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public String viewProfile(@PathVariable("id") Long id, Model model) {
@@ -156,6 +167,7 @@ public class StoreController {
         // Get current user id, send it to view
         if (currentUser != null) {
             model.addAttribute("currentId", currentUser.getId());
+            model.addAttribute("user", currentUser);
         }
 
         // profile.html
