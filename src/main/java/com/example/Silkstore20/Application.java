@@ -38,9 +38,9 @@ public class Application {
 			///Book: String title, String seller, Integer price, Integer quantity, Category category
 			// Add standard items
 
-			productRepository.save(new Product("The Fascist Manifesto", user1, 20, 2, categoryRepository.findByName("Books").get(0), ""));
-			productRepository.save(new Product("20kg Dumbell", user1, 100, 1, categoryRepository.findByName("Gym & Fitness").get(0), ""));
-			productRepository.save(new Product("Mint Cigarettes", user1, 15, 1, categoryRepository.findByName("Banned items").get(0), ""));
+			productRepository.save(new Product("The Fascist Manifesto", user1, 20, 2, categoryRepository.findByName("Books").get(0), "https://images-na.ssl-images-amazon.com/images/I/517yDCfGWsL._SX331_BO1,204,203,200_.jpg"));
+			productRepository.save(new Product("20kg Dumbell", user1, 100, 1, categoryRepository.findByName("Gym & Fitness").get(0), "https://media.istockphoto.com/photos/dumbbell-picture-id183346382?s=612x612"));
+			productRepository.save(new Product("Mint Cigarettes", user1, 15, 1, categoryRepository.findByName("Banned items").get(0), "https://epmgaa.media.clients.ellingtoncms.com/img/photos/2020/03/05/Marlboromenthol_t750x550.jpg?d885fc46c41745b3b5de550c70336c1b382931d2"));
 
 
 

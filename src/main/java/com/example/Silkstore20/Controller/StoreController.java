@@ -95,7 +95,7 @@ public class StoreController {
 
     // Save form
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Product product,  @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String save(Product product) throws IOException {
         // Sets the seller to be the User that is currently logged in, again. Just in case to prevent future errors.
         product.setSeller(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
@@ -121,8 +121,9 @@ public class StoreController {
 
 
         userRepository.save(user);
+
         // Redirect to main page
-        return "redirect:profile";
+        return "redirect:view/" + user.getId();
     }
 
     // Delete product

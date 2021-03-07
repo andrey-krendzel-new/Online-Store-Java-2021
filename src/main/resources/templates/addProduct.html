@@ -25,12 +25,14 @@
         <select id="catlist" th:field="*{category}" class="form-control">
             <option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
         </select>
+        <div style="clear: both; display: block; height: 10px;"></div>
         <label for="price">Price</label>
         <input type="text" th:field="*{price}" />
-        <div>
-            <label>Image url: </label>
-            <input type="text" th:field="*{imageUrl)" />
-        </div>
+        <div style="clear: both; display: block; height: 10px;"></div>
+        <label>Image url: </label>
+
+        <input type="text" th:field="*{imageUrl}" />
+        <p>(Internal upload was disabled because this is coded in Spring)</p>
         <input type="submit" value="Save"></input>
     </form>
 </div>

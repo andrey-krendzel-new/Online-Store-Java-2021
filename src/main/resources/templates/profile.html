@@ -43,7 +43,8 @@
 
 <td th:if="${id == currentId}"><div class="your"><h2>This is your profile.</h2><h3>Deposit money to buy items</h3>
 
-    <form th:object="${user}" th:action="@{deposit}" action="#" method="post" enctype="multipart/form-data">
+
+    <form th:object="${user}" th:action="@{../deposit}" action="#" method="post">
         <div style="clear: both; display: block; height: 10px;"></div>
         <label for="amount">Amount</label>
         <input type="text" id="lname" th:field="*{money}" />
@@ -55,9 +56,14 @@
         <label for="paypal">PayPal</label><br>
         <input type="radio" id="skrill" name="method" value="skrill">
         <label for="skrill">Skrill</label>
+        <input type="hidden" id="username" th:field="*{username}" />
+        <input type="hidden" id="email" th:field="*{email}" />
+        <input type="hidden" id="role" th:field="*{role}" />
+        <input type="hidden" id="password" th:field="*{passwordHash}" />
+        <input type="hidden" id="id" th:field="*{id}" />
 
-
-        <input type="submit" value="Save"></input>
+        <div style="clear: both; display: block; height: 10px;"></div>
+        <input type="submit" value="Deposit"></input>
     </form>
 
 </div>

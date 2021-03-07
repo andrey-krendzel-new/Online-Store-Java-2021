@@ -15,6 +15,7 @@ public class Product {
     private String title;
     private Integer price;
     private Integer quantity;
+    private String imageUrl;
 
     // Join seller to user
     @ManyToOne
@@ -24,8 +25,8 @@ public class Product {
     private String sellerUsername;
     private String sellerId;
 
-    @Column(nullable = true, length = 64)
-    private String imageUrl;
+
+
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -50,12 +51,12 @@ public Product(){
 
 // Special getter for product photos
 
-    @Transient
-    public String getPhotosImagePath() {
+/*    @Transient
+   public String getPhotosImagePath() {
         if (imageUrl == null) return null;
 
         return "/product-photos/" + id + "/" + imageUrl;
-    }
+    } */
 
 // Setters and getters
 public long     getId()       { return id;     }
@@ -129,10 +130,10 @@ public long     getId()       { return id;     }
     public String toString() {
         if (this.category != null)
             return "Product [ title=" + title + ", seller=" + seller.getUsername() + ", price=" + price
-                    + ", quantity =" + quantity + ", category=" + category + "]";
+                    + ", quantity =" + quantity + ", category=" + category + ", image url=" + imageUrl + "]";
         else
             return "Product [ title=" + title + ", seller=" + seller.getUsername() + "price=" + price
-                    + ", quantity =" + quantity + "]";
+                    + ", quantity =" + quantity + ", image url=" + imageUrl + "]";
     }
 
 
