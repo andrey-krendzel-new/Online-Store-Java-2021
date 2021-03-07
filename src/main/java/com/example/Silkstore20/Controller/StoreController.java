@@ -99,19 +99,18 @@ public class StoreController {
         // Sets the seller to be the User that is currently logged in, again. Just in case to prevent future errors.
         product.setSeller(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setImageUrl(fileName);
+      //  String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
 
        Product savedProduct = productRepository.save(product);
 
-       String uploadDir = "product-photos/" + savedProduct.getId();
+   //    String uploadDir = "product-photos/" + savedProduct.getId();
 
-       FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-       System.out.println("fileName " + fileName + "product imageurl" + product.getImageUrl() + "upload dir" + uploadDir);
+   //    FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+   //    System.out.println("fileName: " + fileName + "product imageurl: " + product.getImageUrl() + "upload dir: " + uploadDir);
 
         // Saves product to repository
-        productRepository.save(product);
+        //productRepository.save(product);
         // Redirect to main page
         return "redirect:productlist";
     }
