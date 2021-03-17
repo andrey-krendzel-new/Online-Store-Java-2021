@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Upload Result</title>
+    <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 
 <body>
@@ -10,11 +11,12 @@
 
 Description: <span th:utext="${description}"></span>
 <br/>
-<h3>Uploaded Files:</h3>
+<h3 style="color:green;">Uploaded Files:</h3>
 
 <ul th:each="file : ${uploadedFiles}">
-    <li th:utext="${file}"></li>
+    <li style="color:green;" th:utext="${'Your URL is localhost:8080/upload/' + file}"></li>
 </ul>
+Copy & Paste this URL into Image URL field.
 
 <h3>Failed:</h3>
 <ul th:each="file : ${failedFiles}">

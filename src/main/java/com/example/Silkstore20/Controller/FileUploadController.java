@@ -55,13 +55,15 @@ public class FileUploadController {
         }
         MultipartFile[] fileDatas = myUploadForm.getFileDatas();
         //
-        List<File> uploadedFiles = new ArrayList<File>();
+        List<String> uploadedFiles = new ArrayList<String>();
+
         List<String> failedFiles = new ArrayList<String>();
 
         for (MultipartFile fileData : fileDatas) {
 
             // Client File Name
             String name = fileData.getOriginalFilename();
+
             System.out.println("Client File Name = " + name);
 
             if (name != null && name.length() > 0) {
@@ -72,8 +74,8 @@ public class FileUploadController {
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
                     stream.write(fileData.getBytes());
                     stream.close();
-                    //
-                    uploadedFiles.add(serverFile);
+
+                    uploadedFiles.add(serverFile.getName());
                     System.out.println("Write file: " + serverFile);
                 } catch (Exception e) {
                     System.out.println("Error Write file: " + name);

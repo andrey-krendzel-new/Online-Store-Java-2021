@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Upload One File</title>
+    <title>Upload File</title>
+    <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 
 <body>
 
-<h3>Upload One File:</h3>
+<h3>Upload File:</h3>
 
-<!-- MyUploadForm -->
+
 
 <form th:object="${myUploadForm}" method="POST"
       action="" enctype="multipart/form-data">
