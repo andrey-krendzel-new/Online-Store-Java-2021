@@ -34,15 +34,15 @@
         <th>Email</th>
         <th>Role</th>
     </tr>
-    <tr th:each = "user : ${users}">
-        <td th:text="${user.id}"></td>
-        <td><span th:if="${user.role == 'ADMIN'}" style="color:red;" th:text="${user.username}"></span>
-            <span th:if="${user.role == 'USER'}" th:text="${user.username}"></span></td>
-        <td th:text="${user.email}"></td>
-        <td><span th:if="${user.role == 'ADMIN'}" style="color:red;" th:text="${user.role}"></span>
-            <span th:if="${user.role == 'USER'}" th:text="${user.role}"></span></td>
+    <tr th:each = "usero : ${users}">
+        <td th:text="${usero.id}"></td>
+        <td><span th:if="${usero.role == 'ADMIN'}" style="color:red;" th:text="${usero.username}"></span>
+            <span th:if="${usero.role == 'USER'}" th:text="${usero.username}"></span></td>
+        <td th:text="${usero.email}"></td>
+        <td><span th:if="${usero.role == 'ADMIN'}" style="color:red;" th:text="${usero.role}"></span>
+            <span th:if="${usero.role == 'USER'}" th:text="${usero.role}"></span></td>
         <!--  highlight admin  -->
-        <td><a th:href="@{/view/{id}(id=${user.id})}">View profile</a></td>
+        <td><a th:href="@{/view/{id}(id=${usero.id})}">View profile</a></td>
     </tr>
 </table>
 <!--  <a href="/add">Add Product</a>     -->

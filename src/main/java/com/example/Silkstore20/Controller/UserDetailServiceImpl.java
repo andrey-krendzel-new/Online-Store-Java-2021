@@ -1,7 +1,7 @@
 package com.example.Silkstore20.Controller;
 
 
-import com.example.Silkstore20.Domain.User;
+import com.example.Silkstore20.Domain.Usero;
 import com.example.Silkstore20.Domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -26,7 +26,7 @@ public class UserDetailServiceImpl implements UserDetailsService  {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        User curruser = repository.findByUsername(username);
+        Usero curruser = repository.findByUsername(username);
         UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getPasswordHash(),
                 AuthorityUtils.createAuthorityList(curruser.getRole()));
         return user;

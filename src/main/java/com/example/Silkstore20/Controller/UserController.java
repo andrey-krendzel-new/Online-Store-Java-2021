@@ -1,6 +1,6 @@
 package com.example.Silkstore20.Controller;
 import com.example.Silkstore20.Domain.SignupForm;
-import com.example.Silkstore20.Domain.User;
+import com.example.Silkstore20.Domain.Usero;
 import com.example.Silkstore20.Domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,7 +40,7 @@ public class UserController {
                 BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
                 String hashPwd = bc.encode(pwd);
 
-                User newUser = new User();
+                Usero newUser = new Usero();
                 newUser.setPasswordHash(hashPwd);
                 newUser.setUsername(signupForm.getUsername());
                 newUser.setEmail(signupForm.getEmail());

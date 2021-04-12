@@ -5,13 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +34,7 @@ public class StoreController {
         model.addAttribute("currentUsername", SecurityContextHolder.getContext().getAuthentication().getName());
 
         // Gets current user's object
-        User currentUser = userRepository.findByUsername(
+        Usero currentUser = userRepository.findByUsername(
                 SecurityContextHolder.getContext().getAuthentication().getName()
         );
 
@@ -117,13 +114,13 @@ public class StoreController {
 
     // Deposit money form
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
-    public String deposit(User user) {
+    public String deposit(Usero usero) {
 
 
-        userRepository.save(user);
+        userRepository.save(usero);
 
         // Redirect to main page
-        return "redirect:view/" + user.getId();
+        return "redirect:view/" + usero.getId();
     }
 
     // Delete product
@@ -161,7 +158,7 @@ public class StoreController {
         // Using lambda function, different from orElse(null) that I would normally use
         userRepository.findById(id).ifPresent(o -> model.addAttribute("user", o));
         // Determine current user (object)
-        User currentUser = userRepository.findByUsername(
+        Usero currentUser = userRepository.findByUsername(
                 SecurityContextHolder.getContext().getAuthentication().getName()
         );
         // Get current user id, send it to view

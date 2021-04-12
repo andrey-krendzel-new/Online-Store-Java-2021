@@ -3,7 +3,7 @@ package com.example.Silkstore20.Domain;
 import javax.persistence.*;
 
 @Entity
-public class User {
+public class Usero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +26,10 @@ public class User {
     @Column(name = "money", nullable = false)
     private float money;
 
-    public User() {
+    public Usero() {
     }
 
-    public User(String username, String passwordHash, String role, String email) {
+    public Usero(String username, String passwordHash, String role, String email) {
         super();
         this.username = username;
         this.passwordHash = passwordHash;

@@ -30,12 +30,12 @@
 </div>
 
 <table style="background:white;">
-    <tr><td>User Code: </td> <td th:text="${user.id}"></td></tr>
-    <tr><td>Username: </td> <td><span th:if="${user.role == 'ADMIN'}" style="color:red;" th:text="${user.username}"></span>
-        <span th:if="${user.role == 'USER'}" th:text="${user.username}"></span></td></tr>
-    <tr><td>Email: </td> <td th:text="${user.email}"></td></tr>
-    <tr><td>Role: </td> <td th:text="${user.role}"></td></tr>
-    <tr><td>Money: </td> <td th:text="${user.money}"></td></tr>
+    <tr><td>User Code: </td> <td th:text="${usero.id}"></td></tr>
+    <tr><td>Username: </td> <td><span th:if="${usero.role == 'ADMIN'}" style="color:red;" th:text="${usero.username}"></span>
+        <span th:if="${usero.role == 'USER'}" th:text="${usero.username}"></span></td></tr>
+    <tr><td>Email: </td> <td th:text="${usero.email}"></td></tr>
+    <tr><td>Role: </td> <td th:text="${usero.role}"></td></tr>
+    <tr><td>Money: </td> <td th:text="${usero.money}"></td></tr>
 
 
 </table>
@@ -44,7 +44,7 @@
 <td th:if="${id == currentId}"><div class="your"><h2>This is your profile.</h2><h3>Deposit money to buy items</h3>
 
 
-    <form th:object="${user}" th:action="@{../deposit}" action="#" method="post">
+    <form th:object="${usero}" th:action="@{../deposit}" action="#" method="post">
         <div style="clear: both; display: block; height: 10px;"></div>
         <label for="amount">Amount</label>
         <input type="text" id="lname" th:field="*{money}" />

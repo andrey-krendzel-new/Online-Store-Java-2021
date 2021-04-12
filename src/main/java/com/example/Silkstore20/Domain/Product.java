@@ -21,7 +21,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "username")
     @JsonManagedReference
-    private User seller;
+    private Usero seller;
     private String sellerUsername;
     private String sellerId;
 
@@ -33,7 +33,7 @@ public class Product {
     @JsonManagedReference
     private Category category;
 
-    public Product(String title, User seller, Integer price, Integer quantity, Category category, String imageUrl) {
+    public Product(String title, Usero seller, Integer price, Integer quantity, Category category, String imageUrl) {
 
         this.imageUrl = imageUrl;
         this.title = title;
@@ -69,7 +69,7 @@ public long     getId()       { return id;     }
     public void setTitle(String title) {
         this.title = title;
     }
-    public User getSeller() {
+    public Usero getSeller() {
         return seller;
     }
 
@@ -81,7 +81,7 @@ public long     getId()       { return id;     }
         return seller.getId();
     }
 
-    public void setSeller(User seller) {
+    public void setSeller(Usero seller) {
         this.seller = seller;
     }
 
