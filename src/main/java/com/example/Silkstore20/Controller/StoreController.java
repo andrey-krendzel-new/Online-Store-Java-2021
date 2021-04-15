@@ -156,7 +156,7 @@ public class StoreController {
     public String viewProfile(@PathVariable("id") Long id, Model model) {
         // Find user by  id in the URL
         // Using lambda function, different from orElse(null) that I would normally use
-        userRepository.findById(id).ifPresent(o -> model.addAttribute("user", o));
+        userRepository.findById(id).ifPresent(o -> model.addAttribute("usero", o));
         // Determine current user (object)
         Usero currentUser = userRepository.findByUsername(
                 SecurityContextHolder.getContext().getAuthentication().getName()
@@ -164,7 +164,7 @@ public class StoreController {
         // Get current user id, send it to view
         if (currentUser != null) {
             model.addAttribute("currentId", currentUser.getId());
-            model.addAttribute("user", currentUser);
+            model.addAttribute("usero", currentUser);
         }
 
         // profile.html
