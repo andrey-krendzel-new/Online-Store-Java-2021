@@ -21,15 +21,19 @@ public class Application {
 		return (args) -> {
 			/*
 			userRepository.deleteAll();
-			categoryRepository.deleteAll();
-			productRepository.deleteAll();
+			
+			productRepository.deleteAll();*/
+
+
 			//Add categories
+			
 			categoryRepository.save(new Category("Books"));
 			categoryRepository.save(new Category("Gym & Fitness"));
 			categoryRepository.save(new Category("Technology"));
 			categoryRepository.save(new Category("Banned items"));
 			categoryRepository.save(new Category("Miscellaneous"));
 
+/*
 			// User: String username, String passwordHash, String role, String email
 			Usero user1 = new Usero("user", "$2y$12$PwYCv9Nfm4vRShh1h1RDZe1fxlocWz3EHPxWN.uYKN8d5NG6zXIjW", "USER",  "user@user.com");
 			Usero user2 = new Usero("admin", "$2y$12$F0sFhooRHkDu5tkvgyS/7OHoeykyTbY6TObn5xIc3euDD6mSGbJde", "ADMIN", "admin@admin.com");
