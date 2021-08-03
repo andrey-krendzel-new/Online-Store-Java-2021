@@ -11,4 +11,9 @@
 
 ## Demo
 
-Coming soon
+https://silkstore.herokuapp.com/
+
+
+## Video
+
+https://streamable.com/pfdr7f
