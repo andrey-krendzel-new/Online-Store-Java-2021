@@ -9,7 +9,7 @@
 
 
 
-## Demo
+## Demo (due to Postgres being paid on Heroku now, the app is not working)
 
 https://silkstore.herokuapp.com/
 
