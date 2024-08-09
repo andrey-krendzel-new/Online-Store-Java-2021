@@ -4,8 +4,8 @@
 - Registration & login features
 - Profile feature
 - Add product, edit product, delete product
-- Product images with image upload
-- PostGRE database
+- Product images
+- Postgres database
 
 ## Instructions
 
