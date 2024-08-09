@@ -9,13 +9,16 @@
 
 ## Instructions
 
-Maven project. Open pom.xml in any IDE, import project, run. 
+Maven project.
+1. Open pom.xml in any IDE, import project.
+2. Edit application.properties with your Postgre config (application requires a running Postgre DB)
 
 ## Images
 
 ![Login](demo_images/Login.gif)
 
 ![Authentication](demo_images/Authentication.gif)
+
 
 ## Demo 
 
