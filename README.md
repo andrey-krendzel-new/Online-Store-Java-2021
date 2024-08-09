@@ -19,6 +19,11 @@ Maven project.
 
 ![Authentication](demo_images/Authentication.gif)
 
+![Profile](demo_images/Profile.gif)
+
+![Product Add and Delete](demo_images/Product_add_delete.gif)
+
+![Product Edit](demo_images/Product_edit.gif)
 
 ## Demo 
 
